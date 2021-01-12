@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mmall.dao.SalesFormMapper">
+    <resultMap id="BaseResultMap" type="com.mmall.model.SalesForm">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="dept_id" jdbcType="INTEGER" property="deptId"/>
+        <result column="userid" jdbcType="INTEGER" property="userid"/>
+        <result column="cusname" jdbcType="VARCHAR" property="cusname"/>
+        <result column="proxy" jdbcType="VARCHAR" property="proxy"/>
+        <result column="cussex" jdbcType="INTEGER" property="cussex"/>
+        <result column="cus_phone" jdbcType="VARCHAR" property="cusPhone"/>
+        <result column="custel" jdbcType="VARCHAR" property="custel"/>
+        <result column="cusstatus" jdbcType="INTEGER" property="cusstatus"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operatortime" jdbcType="TIMESTAMP" property="operatortime"/>
+        <result column="order_date" jdbcType="TIMESTAMP" property="orderDate"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="date_of_contract" jdbcType="TIMESTAMP" property="dateOfContract"/>
+        <result column="own_property" jdbcType="VARCHAR" property="ownProperty"/>
+        <result column="operatorip" jdbcType="VARCHAR" property="operatorip"/>
+        <result column="age" jdbcType="VARCHAR" property="age"/>
+        <result column="profession" jdbcType="VARCHAR" property="profession"/>
+        <result column="purpose" jdbcType="VARCHAR" property="purpose"/>
+        <result column="area" jdbcType="VARCHAR" property="area"/>
+        <result column="family_structure" jdbcType="VARCHAR" property="familyStructure"/>
+        <result column="place_of_domicile" jdbcType="VARCHAR" property="placeOfDomicile"/>
+        <result column="marital_status" jdbcType="VARCHAR" property="maritalStatus"/>
+        <result column="restricted_purchase" jdbcType="VARCHAR" property="restrictedPurchase"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="first_visit" jdbcType="VARCHAR" property="firstVisit"/>
+        <result column="payment_method" jdbcType="VARCHAR" property="paymentMethod"/>
+        <result column="focus" jdbcType="VARCHAR" property="focus"/>
+        <result column="defect" jdbcType="VARCHAR" property="defect"/>
+        <result column="desirable" jdbcType="VARCHAR" property="desirable"/>
+        <result column="price" jdbcType="VARCHAR" property="price"/>
+        <result column="cus_source" jdbcType="INTEGER" property="cusSource"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, dept_id, userid, cusname, proxy, cussex, cus_phone, custel, cusstatus, operator,
+    operatortime, order_date, update_time, date_of_contract, own_property, operatorip,
+    age, profession, purpose, area, family_structure, place_of_domicile, marital_status,
+    restricted_purchase, remark, first_visit, payment_method, focus, defect, desirable,
+    price, cus_source
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sales_form
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sales_form
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.mmall.model.SalesForm">
+    insert into sales_form (id, dept_id, userid,
+      cusname, proxy, cussex,
+      cus_phone, custel, cusstatus,
+      operator, operatortime, order_date,
+      update_time, date_of_contract, own_property,
+      operatorip, age, profession,
+      purpose, area, family_structure,
+      place_of_domicile, marital_status, restricted_purchase,
+      remark, first_visit, payment_method,
+      focus, defect, desirable,
+      price, cus_source)
+    values (#{id,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER},
+      #{cusname,jdbcType=VARCHAR}, #{proxy,jdbcType=VARCHAR}, #{cussex,jdbcType=INTEGER},
+      #{cusPhone,jdbcType=VARCHAR}, #{custel,jdbcType=VARCHAR}, #{cusstatus,jdbcType=INTEGER},
+      #{operator,jdbcType=VARCHAR}, #{operatortime,jdbcType=TIMESTAMP}, #{orderDate,jdbcType=TIMESTAMP},
+      #{updateTime,jdbcType=TIMESTAMP}, #{dateOfContract,jdbcType=TIMESTAMP}, #{ownProperty,jdbcType=VARCHAR},
+      #{operatorip,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR},
+      #{purpose,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{familyStructure,jdbcType=VARCHAR},
+      #{placeOfDomicile,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=VARCHAR}, #{restrictedPurchase,jdbcType=VARCHAR},
+      #{remark,jdbcType=VARCHAR}, #{firstVisit,jdbcType=VARCHAR}, #{paymentMethod,jdbcType=VARCHAR},
+      #{focus,jdbcType=VARCHAR}, #{defect,jdbcType=VARCHAR}, #{desirable,jdbcType=VARCHAR},
+      #{price,jdbcType=VARCHAR}, #{cusSource,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.mmall.model.SalesForm">
+        insert into sales_form
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="deptId != null">
+                dept_id,
+            </if>
+            <if test="userid != null">
+                userid,
+            </if>
+            <if test="cusname != null">
+                cusname,
+            </if>
+            <if test="proxy != null">
+                proxy,
+            </if>
+            <if test="cussex != null">
+                cussex,
+            </if>
+            <if test="cusPhone != null">
+                cus_phone,
+            </if>
+            <if test="custel != null">
+                custel,
+            </if>
+            <if test="cusstatus != null">
+                cusstatus,
+            </if>
+            <if test="operator != null">
+                operator,
+            </if>
+            <if test="operatortime != null">
+                operatortime,
+            </if>
+            <if test="orderDate != null">
+                order_date,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="dateOfContract != null">
+                date_of_contract,
+            </if>
+            <if test="ownProperty != null">
+                own_property,
+            </if>
+            <if test="operatorip != null">
+                operatorip,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="profession != null">
+                profession,
+            </if>
+            <if test="purpose != null">
+                purpose,
+            </if>
+            <if test="area != null">
+                area,
+            </if>
+            <if test="familyStructure != null">
+                family_structure,
+            </if>
+            <if test="placeOfDomicile != null">
+                place_of_domicile,
+            </if>
+            <if test="maritalStatus != null">
+                marital_status,
+            </if>
+            <if test="restrictedPurchase != null">
+                restricted_purchase,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="firstVisit != null">
+                first_visit,
+            </if>
+            <if test="paymentMethod != null">
+                payment_method,
+            </if>
+            <if test="focus != null">
+                focus,
+            </if>
+            <if test="defect != null">
+                defect,
+            </if>
+            <if test="desirable != null">
+                desirable,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="cusSource != null">
+                cus_source,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="deptId != null">
+                #{deptId,jdbcType=INTEGER},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="cusname != null">
+                #{cusname,jdbcType=VARCHAR},
+            </if>
+            <if test="proxy != null">
+                #{proxy,jdbcType=VARCHAR},
+            </if>
+            <if test="cussex != null">
+                #{cussex,jdbcType=INTEGER},
+            </if>
+            <if test="cusPhone != null">
+                #{cusPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="custel != null">
+                #{custel,jdbcType=VARCHAR},
+            </if>
+            <if test="cusstatus != null">
+                #{cusstatus,jdbcType=INTEGER},
+            </if>
+            <if test="operator != null">
+                #{operator,jdbcType=VARCHAR},
+            </if>
+            <if test="operatortime != null">
+                #{operatortime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="orderDate != null">
+                #{orderDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dateOfContract != null">
+                #{dateOfContract,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ownProperty != null">
+                #{ownProperty,jdbcType=VARCHAR},
+            </if>
+            <if test="operatorip != null">
+                #{operatorip,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="profession != null">
+                #{profession,jdbcType=VARCHAR},
+            </if>
+            <if test="purpose != null">
+                #{purpose,jdbcType=VARCHAR},
+            </if>
+            <if test="area != null">
+                #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="familyStructure != null">
+                #{familyStructure,jdbcType=VARCHAR},
+            </if>
+            <if test="placeOfDomicile != null">
+                #{placeOfDomicile,jdbcType=VARCHAR},
+            </if>
+            <if test="maritalStatus != null">
+                #{maritalStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="restrictedPurchase != null">
+                #{restrictedPurchase,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="firstVisit != null">
+                #{firstVisit,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentMethod != null">
+                #{paymentMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="focus != null">
+                #{focus,jdbcType=VARCHAR},
+            </if>
+            <if test="defect != null">
+                #{defect,jdbcType=VARCHAR},
+            </if>
+            <if test="desirable != null">
+                #{desirable,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=VARCHAR},
+            </if>
+            <if test="cusSource != null">
+                #{cusSource,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <!--修改公共池客户所属-->
+    <update id="updateByPrimaryKeySelective" parameterType="com.mmall.model.SalesForm">
+        update sales_form
+        <set>
+            <if test="deptId != null">
+                dept_id = #{deptId,jdbcType=INTEGER},
+            </if>
+            <if test="userid != null">
+                userid = #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="cusname != null">
+                cusname = #{cusname,jdbcType=VARCHAR},
+            </if>
+            <if test="proxy != null">
+                proxy = #{proxy,jdbcType=VARCHAR},
+            </if>
+            <if test="cussex != null">
+                cussex = #{cussex,jdbcType=INTEGER},
+            </if>
+            <if test="cusPhone != null">
+                cus_phone = #{cusPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="custel != null">
+                custel = #{custel,jdbcType=VARCHAR},
+            </if>
+            <if test="cusstatus != null">
+                cusstatus = #{cusstatus,jdbcType=INTEGER},
+            </if>
+            <if test="operator != null">
+                operator = #{operator,jdbcType=VARCHAR},
+            </if>
+            <if test="operatortime != null">
+                operatortime = #{operatortime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="orderDate != null">
+                order_date = #{orderDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dateOfContract != null">
+                date_of_contract = #{dateOfContract,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ownProperty != null">
+                own_property = #{ownProperty,jdbcType=VARCHAR},
+            </if>
+            <if test="operatorip != null">
+                operatorip = #{operatorip,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="profession != null">
+                profession = #{profession,jdbcType=VARCHAR},
+            </if>
+            <if test="purpose != null">
+                purpose = #{purpose,jdbcType=VARCHAR},
+            </if>
+            <if test="area != null">
+                area = #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="familyStructure != null">
+                family_structure = #{familyStructure,jdbcType=VARCHAR},
+            </if>
+            <if test="placeOfDomicile != null">
+                place_of_domicile = #{placeOfDomicile,jdbcType=VARCHAR},
+            </if>
+            <if test="maritalStatus != null">
+                marital_status = #{maritalStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="restrictedPurchase != null">
+                restricted_purchase = #{restrictedPurchase,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="firstVisit != null">
+                first_visit = #{firstVisit,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentMethod != null">
+                payment_method = #{paymentMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="focus != null">
+                focus = #{focus,jdbcType=VARCHAR},
+            </if>
+            <if test="defect != null">
+                defect = #{defect,jdbcType=VARCHAR},
+            </if>
+            <if test="desirable != null">
+                desirable = #{desirable,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=VARCHAR},
+            </if>
+            <if test="cusSource != null">
+                cus_source = #{cusSource,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mmall.model.SalesForm">
+    update sales_form
+    set dept_id = #{deptId,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      cusname = #{cusname,jdbcType=VARCHAR},
+      proxy = #{proxy,jdbcType=VARCHAR},
+      cussex = #{cussex,jdbcType=INTEGER},
+      cus_phone = #{cusPhone,jdbcType=VARCHAR},
+      custel = #{custel,jdbcType=VARCHAR},
+      cusstatus = #{cusstatus,jdbcType=INTEGER},
+      operator = #{operator,jdbcType=VARCHAR},
+      operatortime = #{operatortime,jdbcType=TIMESTAMP},
+      order_date = #{orderDate,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      date_of_contract = #{dateOfContract,jdbcType=TIMESTAMP},
+      own_property = #{ownProperty,jdbcType=VARCHAR},
+      operatorip = #{operatorip,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      purpose = #{purpose,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      family_structure = #{familyStructure,jdbcType=VARCHAR},
+      place_of_domicile = #{placeOfDomicile,jdbcType=VARCHAR},
+      marital_status = #{maritalStatus,jdbcType=VARCHAR},
+      restricted_purchase = #{restrictedPurchase,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      first_visit = #{firstVisit,jdbcType=VARCHAR},
+      payment_method = #{paymentMethod,jdbcType=VARCHAR},
+      focus = #{focus,jdbcType=VARCHAR},
+      defect = #{defect,jdbcType=VARCHAR},
+      desirable = #{desirable,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      cus_source = #{cusSource,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <!--公共池客户重复获取判断-->
+    <select id="judgeTimeOutVisitCus" parameterType="map" resultType="int">
+        SELECT COUNT(1)
+        FROM sales_form
+        WHERE cusname = #{salesForm.cusname} AND id = #{salesForm.id} AND cusstatus = 7
+    </select>
+
+    <!--判断用户的电话号码是否重复-->
+    <select id="countByCusPhone" parameterType="map" resultType="int">
+        SELECT count(1)
+        FROM sales_form
+        where cus_phone = #{cusPhone};
+        <if test="id != null">
+            AND id != #{id}
+        </if>
+    </select>
+
+    <!--统计该业务员有多少的客户-->
+    <select id="countByUserId" parameterType="int" resultType="int">
+    SELECT count(1)
+    FROM sales_form
+    WHERE userid = #{userid} AND dept_id = #{deptId} AND cusstatus &lt; 7
+  </select>
+
+    <!--分页查找该用户的客户-->
+    <select id="getPageByUserId" parameterType="map" resultMap="BaseResultMap">
+        SELECT a.*, GROUP_CONCAT(b.remark) AS callRemark FROM sales_form a
+        LEFT JOIN callback b
+        ON a.id = b.cus_id
+        WHERE a.cusstatus &lt; 7
+        <if test="param.userid != '' and param.userid != null">
+            and a.userid = #{param.userid}
+        </if>
+        <if test="param.cusPhone != '' and param.cusPhone != null">
+            and a.cus_phone like #{param.cusPhone}
+        </if>
+        <if test="param.deptId != '' and param.deptId != null">
+            and a.dept_id = #{param.deptId}
+        </if>
+        <if test="param.cusstatus != '' and param.cusstatus != null">
+            and a.cusstatus like #{param.cusstatus}
+        </if>
+        <if test="param.cusname != '' and param.cusname != null">
+            and a.cusname like #{param.cusname}
+        </if>
+        <if test="param.fromtime != null">
+            and a.operatortime &gt;= #{param.fromtime}
+        </if>
+        <if test="param.totime != null">
+            and a.operatortime &lt;= #{param.totime}
+        </if>
+        GROUP BY a.cusname
+        ORDER BY id DESC
+        limit #{page.offset}, #{page.pageSize}
+    </select>
+
+    <!--查找该用户的客户总数-->
+    <select id="countBySearchParam" parameterType="map" resultType="int">
+        SELECT count(1)
+        FROM sales_form
+        WHERE cusstatus &lt; 7
+        <if test="param.userid != '' and param.userid != null">
+            and userid = #{param.userid}
+        </if>
+        <if test="param.cusPhone != '' and param.cusPhone != null">
+            and cus_phone like #{param.cusPhone}
+        </if>
+        <if test="param.deptId != '' and param.deptId != null">
+            and dept_id = #{param.deptId}
+        </if>
+        <if test="param.cusstatus != '' and param.cusstatus != null">
+            and cusstatus like #{param.cusstatus}
+        </if>
+        <if test="param.cusname != '' and param.cusname != null">
+            and cusname like #{param.cusname}
+        </if>
+        <if test="param.fromtime != null">
+            and operatortime &gt;= #{param.fromtime}
+        </if>
+        <if test="param.totime != null">
+            and operatortime &lt;= #{param.totime}
+        </if>
+    </select>
+
+    <!--查询当日的总数-->
+    <select id="countByToday" resultType="int">
+    select COUNT(1)
+    from sales_form
+    where operatortime &gt;= date(now()) and operatortime &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) AND dept_id = #{deptId} AND cusstatus &lt; 7
+    </select>
+    <!--查询所有当日的用户-->
+    <select id="countCusByToday" resultMap="BaseResultMap">
+        SELECT a.id,a.operator,a.proxy,a.cusname,a.cussex,a.age,a.profession,a.area,a.cusstatus,
+        a.operatortime,a.update_time,a.order_date,a.date_of_contract,a.remark, GROUP_CONCAT(b.remark) AS callRemark
+        FROM sales_form a
+        LEFT JOIN callback b
+        ON a.id = b.cus_id
+        where a.operatortime &gt;= date(now()) and a.operatortime &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) AND a.dept_id = #{deptId} AND a.cusstatus &lt; 7
+        GROUP BY a.cusname
+        ORDER BY a.id DESC
+        LIMIT #{page.offset}, #{page.pageSize}
+    </select>
+
+    <!--查询本部门当月的总数-->
+    <select id="countByMonth" resultType="int">
+        select COUNT(1)
+        FROM sales_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        WHERE DATE_FORMAT( operatortime, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' ) AND a.cusstatus &lt; 7
+        <if test="searchForm.deptName != '' and searchForm.deptName != null">
+            and b.name like #{searchForm.deptName}
+        </if>
+        <if test="searchForm.cusPhone != '' and searchForm.cusPhone != null">
+            and cus_phone like #{searchForm.cusPhone}
+        </if>
+        <if test="searchForm.deptId != '' and searchForm.deptId != null">
+            and dept_id = #{searchForm.deptId}
+        </if>
+        <if test="searchForm.cusstatus != '' and searchForm.cusstatus != null">
+            and cusstatus like #{searchForm.cusstatus}
+        </if>
+        <if test="searchForm.cusname != '' and searchForm.cusname != null">
+            and cusname like #{searchForm.cusname}
+        </if>
+        <if test="searchForm.fromtime != null">
+            and operatortime &gt;= #{searchForm.fromtime}
+        </if>
+        <if test="searchForm.totime != null">
+            and operatortime &lt;= #{searchForm.totime}
+        </if>
+    </select>
+
+    <!--查询本部门所有当月的用户-->
+    <select id="countCusByMonth" resultMap="BaseResultMap">
+        SELECT
+        b.name,a.id,a.operator,a.proxy,a.cusname,a.cussex,a.age,a.profession,a.area,a.cusstatus,a.operatortime,a.update_time,a.order_date,a.date_of_contract,a.remark,
+        GROUP_CONCAT(c.remark) AS callRemark
+        FROM sales_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        LEFT JOIN callback c
+        ON a.id = c.cus_id
+        WHERE DATE_FORMAT(operatortime,'%Y%m') = DATE_FORMAT(CURDATE(),'%Y%m') AND a.cusstatus &lt; 7
+        <if test="searchForm.deptName != '' and searchForm.deptName != null">
+            and b.name like #{searchForm.deptName}
+        </if>
+        <if test="searchForm.cusPhone != '' and searchForm.cusPhone != null">
+            and a.cus_phone like #{searchForm.cusPhone}
+        </if>
+        <if test="searchForm.deptId != '' and searchForm.deptId != null">
+            and a.dept_id = #{searchForm.deptId}
+        </if>
+        <if test="searchForm.cusstatus != '' and searchForm.cusstatus != null">
+            and a.cusstatus like #{searchForm.cusstatus}
+        </if>
+        <if test="searchForm.cusname != '' and searchForm.cusname != null">
+            and a.cusname like #{searchForm.cusname}
+        </if>
+        <if test="searchForm.fromtime != null">
+            and a.operatortime &gt;= #{searchForm.fromtime}
+        </if>
+        <if test="searchForm.totime != null">
+            and a.operatortime &lt;= #{searchForm.totime}
+        </if>
+        GROUP BY a.cusname
+        ORDER BY a.id DESC
+        LIMIT #{page.offset}, #{page.pageSize}
+    </select>
+
+    <!--数据汇总页统计当日的总数-->
+    <select id="sumByToday" resultType="int">
+        select COUNT(1)
+        FROM sales_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        WHERE operatortime &gt;= date(now()) and operatortime &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) AND a.cusstatus
+        &lt; 7
+        <if test="searchForm.deptName != '' and searchForm.deptName != null">
+            and b.name like #{searchForm.deptName}
+        </if>
+        <if test="searchForm.cusPhone != '' and searchForm.cusPhone != null">
+            and cus_phone like #{searchForm.cusPhone}
+        </if>
+        <if test="searchForm.deptId != '' and searchForm.deptId != null">
+            and dept_id = #{searchForm.deptId}
+        </if>
+        <if test="searchForm.cusstatus != '' and searchForm.cusstatus != null">
+            and cusstatus like #{searchForm.cusstatus}
+        </if>
+        <if test="searchForm.cusname != '' and searchForm.cusname != null">
+            and cusname like #{searchForm.cusname}
+        </if>
+        <if test="searchForm.fromtime != null">
+            and operatortime &gt;= #{searchForm.fromtime}
+        </if>
+        <if test="searchForm.totime != null">
+            and operatortime &lt;= #{searchForm.totime}
+        </if>
+    </select>
+
+    <!--数据汇总页统计所有当日的用户-->
+    <select id="sumCusByToday" resultMap="BaseResultMap">
+        SELECT
+        b.name,a.id,a.operator,a.proxy,a.cusname,a.cussex,a.age,a.profession,a.area,a.cusstatus,a.operatortime,a.update_time,a.order_date,a.date_of_contract,a.remark,
+        GROUP_CONCAT(c.remark) AS callRemark
+        FROM sales_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        LEFT JOIN callback c
+        ON a.id = c.cus_id
+        WHERE a.operatortime &gt;= date(now()) and a.operatortime &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) AND
+        a.cusstatus &lt; 7
+        <if test="searchForm.deptName != '' and searchForm.deptName != null">
+            and b.name like #{searchForm.deptName}
+        </if>
+        <if test="searchForm.cusPhone != '' and searchForm.cusPhone != null">
+            and a.cus_phone like #{searchForm.cusPhone}
+        </if>
+        <if test="searchForm.deptId != '' and searchForm.deptId != null">
+            and a.dept_id = #{searchForm.deptId}
+        </if>
+        <if test="searchForm.cusstatus != '' and searchForm.cusstatus != null">
+            and a.cusstatus like #{searchForm.cusstatus}
+        </if>
+        <if test="searchForm.cusname != '' and searchForm.cusname != null">
+            and a.cusname like #{searchForm.cusname}
+        </if>
+        <if test="searchForm.fromtime != null">
+            and a.operatortime &gt;= #{searchForm.fromtime}
+        </if>
+        <if test="searchForm.totime != null">
+            and a.operatortime &lt;= #{searchForm.totime}
+        </if>
+        GROUP BY a.cusname
+        ORDER BY a.id DESC
+        LIMIT #{page.offset}, #{page.pageSize}
+    </select>
+
+    <!--查新当日的所有部门业绩-->
+    <select id="countVisitInfoByToday" resultType="map">
+        SELECT b.`name`, COUNT(b.`name`) as cou FROM sales_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        WHERE operatortime &gt;= date(now()) and operatortime &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) AND
+        a.cusstatus &lt; 7
+        group by b.`name`
+    </select>
+    <!--查新当月的所有部门业绩-->
+    <select id="countVisitInfoByMonth" resultType="map">
+        SELECT b.`name`, COUNT(b.`name`) as cou FROM sales_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        WHERE DATE_FORMAT(operatortime,'%Y%m') = DATE_FORMAT( CURDATE( ) ,'%Y%m') AND
+        a.cusstatus &lt; 7
+        group by b.`name`
+    </select>
+
+    <!--当月每天业绩的走势图-->
+    <select id="countSuccessfulCus" resultType="map">
+      select count(*) as num,substr(date_of_contract,1,10) as name
+      from sales_form
+      where DATE_FORMAT(date_of_contract,'%Y%m') = DATE_FORMAT( CURDATE( ) ,'%Y%m') AND cusstatus = 3
+      group by substr(date_of_contract,1,10)
+    </select>
+
+    <!--当月排名前10的业务员-->
+    <select id="countTenByUser" resultType="map">
+      SELECT b.username as name, COUNT(b.username) as cou FROM sales_form a
+      INNER JOIN sys_user b
+      ON a.userid = b.id
+      WHERE DATE_FORMAT(date_of_contract,'%Y%m') = DATE_FORMAT( CURDATE( ) ,'%Y%m') AND
+        a.cusstatus &lt; 7
+      group by b.username
+      ORDER BY cou desc limit 10
+    </select>
+
+    <!--查询所有客户历史的总数-->
+    <select id="countAllCus" resultType="int">
+        select COUNT(1)
+        FROM sales_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        where a.cusstatus &lt; 7
+        <if test="searchForm.deptName != '' and searchForm.deptName != null">
+            and b.name like #{searchForm.deptName}
+        </if>
+        <if test="searchForm.cusPhone != '' and searchForm.cusPhone != null">
+            and cus_phone like #{searchForm.cusPhone}
+        </if>
+        <if test="searchForm.deptId != '' and searchForm.deptId != null">
+            and dept_id = #{searchForm.deptId}
+        </if>
+        <if test="searchForm.cusstatus != '' and searchForm.cusstatus != null">
+            and cusstatus like #{searchForm.cusstatus}
+        </if>
+        <if test="searchForm.cusname != '' and searchForm.cusname != null">
+            and cusname like #{searchForm.cusname}
+        </if>
+        <if test="searchForm.fromtime != null">
+            and operatortime &gt;= #{searchForm.fromtime}
+        </if>
+        <if test="searchForm.totime != null">
+            and operatortime &lt;= #{searchForm.totime}
+        </if>
+    </select>
+
+    <!--查询所有客户历史-->
+    <select id="findAllCus" resultMap="BaseResultMap">
+        SELECT
+        b.name,a.id,a.operator,a.proxy,a.cusname,a.cussex,a.age,a.profession,a.area,a.cusstatus,a.operatortime,a.update_time,a.order_date,a.date_of_contract,a.remark,
+        GROUP_CONCAT(c.remark) AS callRemark
+        FROM sales_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        LEFT JOIN callback c
+        ON a.id = c.cus_id
+        where a.cusstatus &lt; 7
+        <if test="searchForm.deptName != '' and searchForm.deptName != null">
+            and b.name like #{searchForm.deptName}
+        </if>
+        <if test="searchForm.cusPhone != '' and searchForm.cusPhone != null">
+            and a.cus_phone like #{searchForm.cusPhone}
+        </if>
+        <if test="searchForm.deptId != '' and searchForm.deptId != null">
+            and a.dept_id = #{searchForm.deptId}
+        </if>
+        <if test="searchForm.cusstatus != '' and searchForm.cusstatus != null">
+            and a.cusstatus like #{searchForm.cusstatus}
+        </if>
+        <if test="searchForm.cusname != '' and searchForm.cusname != null">
+            and a.cusname like #{searchForm.cusname}
+        </if>
+        <if test="searchForm.fromtime != null">
+            and a.operatortime &gt;= #{searchForm.fromtime}
+        </if>
+        <if test="searchForm.totime != null">
+            and a.operatortime &lt;= #{searchForm.totime}
+        </if>
+        GROUP BY a.cusname
+        ORDER BY a.id DESC
+        LIMIT #{page.offset}, #{page.pageSize}
+    </select>
+
+
+    <update id="updateVisit" parameterType="map">
+        update sales_form set update_time = #{form.updateTime}
+        where id = #{form.id}
+    </update>
+
+    <!--来访公共池客户-->
+    <select id="timeOutVisitCus" parameterType="int" resultMap="BaseResultMap">
+        SELECT b.name,a.id,a.operator,a.proxy,a.cusname,a.cussex,a.age,a.profession,a.area,a.cusstatus,a.operatortime,
+        a.update_time,a.order_date,a.date_of_contract,a.remark,GROUP_CONCAT(c.remark) AS callRemark
+        FROM sales_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        LEFT JOIN callback c
+        ON a.id = c.cus_id
+        WHERE a.cusstatus = 7 and a.dept_id = #{deptId}
+        GROUP BY a.cusname
+        ORDER BY a.id DESC
+    </select>
+
+    <!--统计电访公共池客户数量-->
+    <select id="countTimeOutVisitCus" resultType="int">
+        select count(1)
+        FROM sales_form
+        WHERE cusstatus = 7 and dept_id = #{deptId}
+    </select>
+
+    <!--修改客户的更新节点-->
+    <update id="updateCommonPoolUpdateTime" parameterType="map">
+        update sales_form set update_time = #{updateTime}
+        where id = #{id}
+    </update>
+
+    <!--来访超7客户-->
+    <update id="putCommonPoolCus" >
+        UPDATE sales_form
+        SET cusstatus = 7
+        where now() &gt; ADDDATE(update_time,interval 7 day) AND cusstatus &lt; 3;
+    </update>
+
+    <!--首页本部门图表-->
+    <!--本部门当月接访量-->
+    <select id="deptVisitByMon" parameterType="int" resultType="map">
+        SELECT b.username as name, COUNT(b.username) as cou FROM sales_form a
+        INNER JOIN sys_user b
+        ON a.userid = b.id
+        WHERE DATE_FORMAT(a.operatortime,'%Y%m') = DATE_FORMAT( CURDATE( ) ,'%Y%m') AND a.dept_id = #{user.deptId} AND b.status = 1
+        group by b.username
+        ORDER BY cou DESC
+    </select>
+
+    <!--年度本部门成交量-->
+    <select id="annualTurnover" parameterType="int" resultType="map">
+        SELECT b.username as name, COUNT(b.username) as cou FROM sales_form a
+        INNER JOIN sys_user b
+        ON a.userid = b.id
+        WHERE YEAR(a.date_of_contract)=YEAR(NOW()) AND a.dept_id = #{user.deptId} AND b.status = 1
+        group by b.username
+        ORDER BY cou DESC
+    </select>
+
+    <!--本月本部门成交量-->
+    <select id="monthDealByDept" parameterType="int" resultType="map">
+        SELECT b.username as name, COUNT(b.username) as cou FROM sales_form a
+        INNER JOIN sys_user b
+        ON a.userid = b.id
+        WHERE DATE_FORMAT(date_of_contract,'%Y%m') = DATE_FORMAT( CURDATE( ) ,'%Y%m') AND a.dept_id = #{user.deptId} AND b.status = 1
+        GROUP BY b.username
+        ORDER BY cou DESC
+    </select>
+
+    <!--本部门每个人的成交率-->
+    <select id="findDepartmentPerformanceByOne" parameterType="int" resultType="map">
+        SELECT
+	        su.username AS name,
+	        (round(sfcDeal.num / sf.num * 100,2)) AS cou
+        FROM
+	        sys_user su,
+	        (SELECT COUNT( id ) AS num, userid FROM sales_form where dept_id = #{user.deptId} GROUP BY userid) sf,
+	        (SELECT COUNT( id ) AS num, userid FROM sales_form where dept_id = #{user.deptId} AND cusstatus = 3 GROUP BY userid ) AS sfcDeal
+        WHERE
+	        sfcDeal.userid = su.id
+	        and su.id = sfcDeal.userid
+	        and sf.userid = su.id
+	        and su.`status` = 1
+	        GROUP BY sfcDeal.userid
+	        ORDER BY cou DESC
+    </select>
+</mapper>

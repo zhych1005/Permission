@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mmall.dao.TelVisitFormMapper">
+    <resultMap id="BaseResultMap" type="com.mmall.model.TelVisitForm">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="dept_id" jdbcType="INTEGER" property="deptId"/>
+        <result column="userid" jdbcType="INTEGER" property="userid"/>
+        <result column="cusname" jdbcType="VARCHAR" property="cusname"/>
+        <result column="cussex" jdbcType="INTEGER" property="cussex"/>
+        <result column="proxy" jdbcType="VARCHAR" property="proxy"/>
+        <result column="cus_phone" jdbcType="VARCHAR" property="cusPhone"/>
+        <result column="custel" jdbcType="VARCHAR" property="custel"/>
+        <result column="area" jdbcType="VARCHAR" property="area"/>
+        <result column="grundlagen" jdbcType="VARCHAR" property="grundlagen"/>
+        <result column="acreage" jdbcType="VARCHAR" property="acreage"/>
+        <result column="focus" jdbcType="VARCHAR" property="focus"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operatortime" jdbcType="TIMESTAMP" property="operatortime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="time_of_visit" jdbcType="TIMESTAMP" property="timeOfVisit"/>
+        <result column="cusstatus" jdbcType="INTEGER" property="cusstatus"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, dept_id, userid, cusname, cussex, proxy, cus_phone, custel, area, grundlagen,
+    acreage, focus, operator, operatortime, update_time, time_of_visit, cusstatus, remark
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tel_visit_form
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tel_visit_form
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.mmall.model.TelVisitForm">
+    insert into tel_visit_form (id, dept_id, userid,
+      cusname, cussex, proxy,
+      cus_phone, custel, area,
+      grundlagen, acreage, focus,
+      operator, operatortime, update_time,
+      time_of_visit, cusstatus, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER},
+      #{cusname,jdbcType=VARCHAR}, #{cussex,jdbcType=INTEGER}, #{proxy,jdbcType=VARCHAR},
+      #{cusPhone,jdbcType=VARCHAR}, #{custel,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR},
+      #{grundlagen,jdbcType=VARCHAR}, #{acreage,jdbcType=VARCHAR}, #{focus,jdbcType=VARCHAR},
+      #{operator,jdbcType=VARCHAR}, #{operatortime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+      #{timeOfVisit,jdbcType=TIMESTAMP}, #{cusstatus,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.mmall.model.TelVisitForm">
+        insert into tel_visit_form
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="deptId != null">
+                dept_id,
+            </if>
+            <if test="userid != null">
+                userid,
+            </if>
+            <if test="cusname != null">
+                cusname,
+            </if>
+            <if test="cussex != null">
+                cussex,
+            </if>
+            <if test="proxy != null">
+                proxy,
+            </if>
+            <if test="cusPhone != null">
+                cus_phone,
+            </if>
+            <if test="custel != null">
+                custel,
+            </if>
+            <if test="area != null">
+                area,
+            </if>
+            <if test="grundlagen != null">
+                grundlagen,
+            </if>
+            <if test="acreage != null">
+                acreage,
+            </if>
+            <if test="focus != null">
+                focus,
+            </if>
+            <if test="operator != null">
+                operator,
+            </if>
+            <if test="operatortime != null">
+                operatortime,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="timeOfVisit != null">
+                time_of_visit,
+            </if>
+            <if test="cusstatus != null">
+                cusstatus,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="deptId != null">
+                #{deptId,jdbcType=INTEGER},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="cusname != null">
+                #{cusname,jdbcType=VARCHAR},
+            </if>
+            <if test="cussex != null">
+                #{cussex,jdbcType=INTEGER},
+            </if>
+            <if test="proxy != null">
+                #{proxy,jdbcType=VARCHAR},
+            </if>
+            <if test="cusPhone != null">
+                #{cusPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="custel != null">
+                #{custel,jdbcType=VARCHAR},
+            </if>
+            <if test="area != null">
+                #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="grundlagen != null">
+                #{grundlagen,jdbcType=VARCHAR},
+            </if>
+            <if test="acreage != null">
+                #{acreage,jdbcType=VARCHAR},
+            </if>
+            <if test="focus != null">
+                #{focus,jdbcType=VARCHAR},
+            </if>
+            <if test="operator != null">
+                #{operator,jdbcType=VARCHAR},
+            </if>
+            <if test="operatortime != null">
+                #{operatortime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timeOfVisit != null">
+                #{timeOfVisit,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cusstatus != null">
+                #{cusstatus,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mmall.model.TelVisitForm">
+        update tel_visit_form
+        <set>
+            <if test="deptId != null">
+                dept_id = #{deptId,jdbcType=INTEGER},
+            </if>
+            <if test="userid != null">
+                userid = #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="cusname != null">
+                cusname = #{cusname,jdbcType=VARCHAR},
+            </if>
+            <if test="cussex != null">
+                cussex = #{cussex,jdbcType=INTEGER},
+            </if>
+            <if test="proxy != null">
+                proxy = #{proxy,jdbcType=VARCHAR},
+            </if>
+            <if test="cusPhone != null">
+                cus_phone = #{cusPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="custel != null">
+                custel = #{custel,jdbcType=VARCHAR},
+            </if>
+            <if test="area != null">
+                area = #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="grundlagen != null">
+                grundlagen = #{grundlagen,jdbcType=VARCHAR},
+            </if>
+            <if test="acreage != null">
+                acreage = #{acreage,jdbcType=VARCHAR},
+            </if>
+            <if test="focus != null">
+                focus = #{focus,jdbcType=VARCHAR},
+            </if>
+            <if test="operator != null">
+                operator = #{operator,jdbcType=VARCHAR},
+            </if>
+            <if test="operatortime != null">
+                operatortime = #{operatortime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timeOfVisit != null">
+                time_of_visit = #{timeOfVisit,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cusstatus != null">
+                cusstatus = #{cusstatus,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mmall.model.TelVisitForm">
+    update tel_visit_form
+    set dept_id = #{deptId,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      cusname = #{cusname,jdbcType=VARCHAR},
+      cussex = #{cussex,jdbcType=INTEGER},
+      proxy = #{proxy,jdbcType=VARCHAR},
+      cus_phone = #{cusPhone,jdbcType=VARCHAR},
+      custel = #{custel,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      grundlagen = #{grundlagen,jdbcType=VARCHAR},
+      acreage = #{acreage,jdbcType=VARCHAR},
+      focus = #{focus,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      operatortime = #{operatortime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      time_of_visit = #{timeOfVisit,jdbcType=TIMESTAMP},
+      cusstatus = #{cusstatus,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <!--根据客户名称修改客户的来访状态-->
+    <update id="updateCusStatus" parameterType="com.mmall.model.TelVisitForm">
+       update tel_visit_form
+       set cusstatus = 9
+       WHERE cusname = #{cusname};
+  </update>
+
+    <!--判断用户的电话号码是否重复-->
+    <select id="countByTelCusPhone" parameterType="map" resultType="int">
+        SELECT count(1)
+        FROM tel_visit_form
+        where cus_phone = #{cusPhone}
+        <if test="id != null">
+            AND id != #{id}
+        </if>
+    </select>
+
+    <!--查找该用户的所有客户数量-->
+    <select id="countTelVisitBySearchParam" parameterType="map" resultType="int">
+        SELECT count(1)
+        FROM tel_visit_form
+        where cusstatus &lt; 7
+        <if test="param.userid != '' and param.userid != null">
+            and userid = #{param.userid}
+        </if>
+        <if test="param.deptId != '' and param.deptId != null">
+            and dept_id = #{param.deptId}
+        </if>
+        <if test="param.cusstatus != '' and param.cusstatus != null">
+            and cusstatus = #{param.cusstatus}
+        </if>
+        <if test="param.cusname != '' and param.cusname != null">
+            and cusname like #{param.cusname}
+        </if>
+        <if test="param.cusPhone != '' and param.cusPhone != null">
+            and cus_phone like #{param.cusPhone}
+        </if>
+        <if test="param.fromtime != null">
+            and operatortime &gt;= #{param.fromtime}
+        </if>
+        <if test="param.totime != null">
+            and operatortime &lt;= #{param.totime}
+        </if>
+    </select>
+
+    <!--分页查找该用户的所有客户-->
+    <select id="getTelVisitPageByUserId" parameterType="map" resultMap="BaseResultMap">
+        SELECT a.*, GROUP_CONCAT(b.remark) AS telCallRemark FROM tel_visit_form a
+        LEFT JOIN tel_callback b
+        ON a.id = b.cus_id
+        where a.cusstatus &lt; 7
+        <if test="param.userid != '' and param.userid != null">
+            and a.userid = #{param.userid}
+        </if>
+        <if test="param.deptId != '' and param.deptId != null">
+            and a.dept_id = #{param.deptId}
+        </if>
+        <if test="param.cusstatus != '' and param.cusstatus != null">
+            and a.cusstatus = #{param.cusstatus}
+        </if>
+        <if test="param.cusname != '' and param.cusname != null">
+            and a.cusname like #{param.cusname}
+        </if>
+        <if test="param.cusPhone != '' and param.cusPhone != null">
+            and a.cus_phone like #{param.cusPhone}
+        </if>
+        <if test="param.fromtime != null">
+            and a.operatortime &gt;= #{param.fromtime}
+        </if>
+        <if test="param.totime != null">
+            and a.operatortime &lt;= #{param.totime}
+        </if>
+        GROUP BY a.cusname
+        ORDER BY a.id DESC
+        limit #{page.offset}, #{page.pageSize}
+    </select>
+
+
+    <!--查询当日的总数-->
+    <select id="countTelByToday" resultType="int">
+    select COUNT(1)
+    from tel_visit_form
+    where operatortime &gt;= date(now()) and operatortime &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) AND dept_id = #{deptId} AND cusstatus &lt; 7
+    </select>
+    <!--查询所有当日的用户-->
+    <select id="countTelCusByToday" resultMap="BaseResultMap">
+        select a.id,a.operator,a.proxy,a.cusname,a.cussex,a.area,a.cusstatus,a.operatortime,
+        a.update_time,a.time_of_visit,a.focus,a.acreage,a.grundlagen,a.remark,GROUP_CONCAT(b.remark) AS telCallRemark
+        from tel_visit_form a
+        LEFT JOIN tel_callback b
+        ON a.id = b.cus_id
+        where a.operatortime &gt;= date(now()) and a.operatortime &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) AND a.dept_id = #{deptId} AND cusstatus &lt; 7
+        GROUP BY a.cusname
+        ORDER BY a.id DESC
+        LIMIT #{page.offset}, #{page.pageSize}
+    </select>
+
+    <!--查询当月的总数-->
+    <select id="countTelByMonth" resultType="int">
+        select COUNT(1)
+        FROM tel_visit_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        WHERE DATE_FORMAT( operatortime, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' ) AND cusstatus &lt; 7
+        <if test="visitSearchForm.deptName != '' and visitSearchForm.deptName != null">
+            and b.`name` like #{visitSearchForm.deptName}
+        </if>
+        <if test="visitSearchForm.deptId != '' and visitSearchForm.deptId != null">
+            and dept_id = #{visitSearchForm.deptId}
+        </if>
+        <if test="visitSearchForm.cusstatus != '' and visitSearchForm.cusstatus != null">
+            and cusstatus = #{visitSearchForm.cusstatus}
+        </if>
+        <if test="visitSearchForm.cusname != '' and visitSearchForm.cusname != null">
+            and cusname like #{visitSearchForm.cusname}
+        </if>
+        <if test="visitSearchForm.cusPhone != '' and visitSearchForm.cusPhone != null">
+            and cus_phone like #{visitSearchForm.cusPhone}
+        </if>
+        <if test="visitSearchForm.fromtime != null">
+            and operatortime &gt;= #{visitSearchForm.fromtime}
+        </if>
+        <if test="visitSearchForm.totime != null">
+            and operatortime &lt;= #{visitSearchForm.totime}
+        </if>
+    </select>
+
+    <!--查询所有当月的用户-->
+    <select id="countTelCusByMonth" resultMap="BaseResultMap">
+        SELECT b.name,a.id,a.operator,a.proxy,a.cusname,a.cussex,a.area,a.cusstatus,a.operatortime,
+        a.update_time,a.time_of_visit,a.focus,a.acreage,a.grundlagen,a.remark,GROUP_CONCAT(c.remark) AS telCallRemark
+        FROM tel_visit_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        LEFT JOIN tel_callback c
+        ON a.id = c.cus_id
+        WHERE DATE_FORMAT(a.operatortime,'%Y%m') = DATE_FORMAT(CURDATE() ,'%Y%m') AND a.cusstatus &lt; 7
+        <if test="visitSearchForm.deptName != '' and visitSearchForm.deptName != null">
+            and b.name like #{visitSearchForm.deptName}
+        </if>
+        <if test="visitSearchForm.deptId != '' and visitSearchForm.deptId != null">
+            and a.dept_id = #{visitSearchForm.deptId}
+        </if>
+        <if test="visitSearchForm.cusstatus != '' and visitSearchForm.cusstatus != null">
+            and a.cusstatus = #{visitSearchForm.cusstatus}
+        </if>
+        <if test="visitSearchForm.cusname != '' and visitSearchForm.cusname != null">
+            and a.cusname like #{visitSearchForm.cusname}
+        </if>
+        <if test="visitSearchForm.cusPhone != '' and visitSearchForm.cusPhone != null">
+            and a.cus_phone like #{visitSearchForm.cusPhone}
+        </if>
+        <if test="visitSearchForm.fromtime != null">
+            and a.operatortime &gt;= #{visitSearchForm.fromtime}
+        </if>
+        <if test="visitSearchForm.totime != null">
+            and a.operatortime &lt;= #{visitSearchForm.totime}
+        </if>
+        GROUP BY a.cusname
+        ORDER BY a.id DESC
+        LIMIT #{page.offset}, #{page.pageSize}
+    </select>
+
+
+    <!--统计当日的总数-->
+    <select id="sumTodayTelPageForm" resultType="int">
+        select COUNT(1)
+        FROM tel_visit_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        WHERE operatortime &gt;= date(now()) and operatortime &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) AND cusstatus
+        &lt; 7
+        <if test="visitSearchForm.deptName != '' and visitSearchForm.deptName != null">
+            and b.`name` like #{visitSearchForm.deptName}
+        </if>
+        <if test="visitSearchForm.deptId != '' and visitSearchForm.deptId != null">
+            and dept_id = #{visitSearchForm.deptId}
+        </if>
+        <if test="visitSearchForm.cusstatus != '' and visitSearchForm.cusstatus != null">
+            and cusstatus = #{visitSearchForm.cusstatus}
+        </if>
+        <if test="visitSearchForm.cusname != '' and visitSearchForm.cusname != null">
+            and cusname like #{visitSearchForm.cusname}
+        </if>
+        <if test="visitSearchForm.cusPhone != '' and visitSearchForm.cusPhone != null">
+            and cus_phone like #{visitSearchForm.cusPhone}
+        </if>
+        <if test="visitSearchForm.fromtime != null">
+            and operatortime &gt;= #{visitSearchForm.fromtime}
+        </if>
+        <if test="visitSearchForm.totime != null">
+            and operatortime &lt;= #{visitSearchForm.totime}
+        </if>
+    </select>
+
+    <!--统计所有当日的用户-->
+    <select id="sumTelCusByToday" resultMap="BaseResultMap">
+        SELECT
+        b.name,a.id,a.operator,a.proxy,a.cusname,a.cussex,a.area,a.cusstatus,a.operatortime,a.update_time,a.time_of_visit,
+        a.focus,a.acreage,a.grundlagen,a.remark, GROUP_CONCAT(c.remark) AS telCallRemark
+        FROM tel_visit_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        LEFT JOIN tel_callback c
+        ON a.id = c.cus_id
+        WHERE operatortime &gt;= date(now()) and operatortime &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) AND cusstatus
+        &lt; 7
+        <if test="visitSearchForm.deptName != '' and visitSearchForm.deptName != null">
+            and b.name like #{visitSearchForm.deptName}
+        </if>
+        <if test="visitSearchForm.deptId != '' and visitSearchForm.deptId != null">
+            and dept_id = #{visitSearchForm.deptId}
+        </if>
+        <if test="visitSearchForm.cusstatus != '' and visitSearchForm.cusstatus != null">
+            and cusstatus = #{visitSearchForm.cusstatus}
+        </if>
+        <if test="visitSearchForm.cusname != '' and visitSearchForm.cusname != null">
+            and cusname like #{visitSearchForm.cusname}
+        </if>
+        <if test="visitSearchForm.cusPhone != '' and visitSearchForm.cusPhone != null">
+            and cus_phone like #{visitSearchForm.cusPhone}
+        </if>
+        <if test="visitSearchForm.fromtime != null">
+            and operatortime &gt;= #{visitSearchForm.fromtime}
+        </if>
+        <if test="visitSearchForm.totime != null">
+            and operatortime &lt;= #{visitSearchForm.totime}
+        </if>
+        GROUP BY a.cusname
+        ORDER BY a.id DESC
+        LIMIT #{page.offset}, #{page.pageSize}
+    </select>
+
+    <!--查新当日的所有部门业绩-->
+    <select id="countTelVisitInfoByToday" resultType="map">
+        SELECT b.`name`, COUNT(b.`name`) as cou FROM tel_visit_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        WHERE operatortime &gt;= date(now()) and operatortime &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) AND cusstatus &lt; 7
+        group by b.`name`
+    </select>
+    <!--查新当月的所有部门业绩-->
+    <select id="countTelVisitInfoByMonth" resultType="map">
+        SELECT b.`name`, COUNT(b.`name`) as cou FROM tel_visit_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        WHERE DATE_FORMAT( operatortime, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' ) AND cusstatus &lt; 7
+        group by b.`name`
+    </select>
+
+    <!--查询所有的电访客户总数-->
+    <select id="countAllTelCus" resultType="int">
+        select COUNT(1)
+        FROM tel_visit_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        where a.cusstatus &lt; 7
+        <if test="searchForm.deptName != '' and searchForm.deptName != null">
+            and b.`name` like #{searchForm.deptName}
+        </if>
+        <if test="searchForm.deptId != '' and searchForm.deptId != null">
+            and dept_id = #{searchForm.deptId}
+        </if>
+        <if test="searchForm.cusstatus != '' and searchForm.cusstatus != null">
+            and cusstatus = #{searchForm.cusstatus}
+        </if>
+        <if test="searchForm.cusname != '' and searchForm.cusname != null">
+            and cusname like #{searchForm.cusname}
+        </if>
+        <if test="searchForm.cusPhone != '' and searchForm.cusPhone != null">
+            and cus_phone like #{searchForm.cusPhone}
+        </if>
+        <if test="searchForm.fromtime != null">
+            and operatortime &gt;= #{searchForm.fromtime}
+        </if>
+        <if test="searchForm.totime != null">
+            and operatortime &lt;= #{searchForm.totime}
+        </if>
+    </select>
+
+    <!--分页查找所有的电访客户-->
+    <select id="findAllTelCus" resultMap="BaseResultMap">
+        SELECT b.name,a.id,a.operator,a.proxy,a.cusname,a.cussex,a.area,a.cusstatus,a.operatortime,a.update_time,
+        a.time_of_visit,a.focus,a.acreage,a.grundlagen,a.remark, GROUP_CONCAT(c.remark) AS telCallRemark
+        FROM tel_visit_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        LEFT JOIN tel_callback c
+        ON a.id = c.cus_id
+        where a.cusstatus &lt; 7
+        <if test="searchForm.deptName != '' and searchForm.deptName != null">
+            and b.`name` like #{searchForm.deptName}
+        </if>
+        <if test="searchForm.deptId != '' and searchForm.deptId != null">
+            and a.dept_id = #{searchForm.deptId}
+        </if>
+        <if test="searchForm.cusstatus != '' and searchForm.cusstatus != null">
+            and a.cusstatus = #{searchForm.cusstatus}
+        </if>
+        <if test="searchForm.cusname != '' and searchForm.cusname != null">
+            and a.cusname like #{searchForm.cusname}
+        </if>
+        <if test="searchForm.cusPhone != '' and searchForm.cusPhone != null">
+            and a.cus_phone like #{searchForm.cusPhone}
+        </if>
+        <if test="searchForm.fromtime != null">
+            and a.operatortime &gt;= #{searchForm.fromtime}
+        </if>
+        <if test="searchForm.totime != null">
+            and a.operatortime &lt;= #{searchForm.totime}
+        </if>
+        GROUP BY a.cusname
+        ORDER BY a.id DESC
+        LIMIT #{page.offset}, #{page.pageSize}
+    </select>
+
+    <!--修改电访客户表的更新时间-->
+    <update id="updateTelVisit" parameterType="map">
+        update tel_visit_form set update_time = #{telForm.updateTime}
+        where id = #{telForm.id}
+    </update>
+
+    <!--电访客户公共池-->
+    <select id="timeOutTelVisitCus" parameterType="int" resultMap="BaseResultMap">
+        select a.id,a.operator,a.proxy,a.cusname,a.cussex,a.area,a.cusstatus,a.operatortime,
+        a.update_time,a.time_of_visit,a.focus,a.acreage,a.grundlagen,a.remark,GROUP_CONCAT(c.remark) AS telCallRemark
+        FROM tel_visit_form a
+        INNER JOIN sys_dept b
+        ON a.dept_id = b.id
+        LEFT JOIN tel_callback c
+        ON a.id = c.cus_id
+        WHERE a.cusstatus = 7 and a.dept_id = #{deptId}
+        GROUP BY a.cusname
+        ORDER BY a.id DESC
+    </select>
+
+    <!--统计电访公共池客户数量-->
+    <select id="countTimeOutTelVisitCus" resultType="int">
+        select count(1)
+        FROM tel_visit_form
+        WHERE cusstatus = 7 and dept_id = #{deptId}
+    </select>
+
+    <!--修改客户的更新节点-->
+    <update id="updateCommonPoolTelUpdateTime" parameterType="map">
+        update tel_visit_form set update_time = #{updateTime}
+        where id = #{id}
+    </update>
+
+    <!--将电访超期客户放入公共池-->
+    <update id="putCommonPoolTelCus">
+        UPDATE tel_visit_form
+        SET cusstatus = 7
+        where now() &gt; ADDDATE(update_time,interval 7 day) AND cusstatus &lt; 9
+    </update>
+</mapper>

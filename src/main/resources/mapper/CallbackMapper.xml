@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mmall.dao.CallbackMapper">
+  <resultMap id="BaseResultMap" type="com.mmall.model.Callback">
+    <id column="call_id" jdbcType="INTEGER" property="callId" />
+    <result column="cus_id" jdbcType="INTEGER" property="cusId" />
+    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="cusname" jdbcType="VARCHAR" property="cusname" />
+    <result column="visit_time" jdbcType="TIMESTAMP" property="visitTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    call_id, cus_id, dept_id, userid, username, cusname, visit_time, remark, flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from callback
+    where call_id = #{callId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from callback
+    where call_id = #{callId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mmall.model.Callback">
+    insert into callback (call_id, cus_id, dept_id,
+      userid, username, cusname,
+      visit_time, remark, flag
+      )
+    values (#{callId,jdbcType=INTEGER}, #{cusId,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER},
+      #{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{cusname,jdbcType=VARCHAR},
+      #{visitTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mmall.model.Callback">
+    insert into callback
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="callId != null">
+        call_id,
+      </if>
+      <if test="cusId != null">
+        cus_id,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="cusname != null">
+        cusname,
+      </if>
+      <if test="visitTime != null">
+        visit_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="callId != null">
+        #{callId,jdbcType=INTEGER},
+      </if>
+      <if test="cusId != null">
+        #{cusId,jdbcType=INTEGER},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="cusname != null">
+        #{cusname,jdbcType=VARCHAR},
+      </if>
+      <if test="visitTime != null">
+        #{visitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mmall.model.Callback">
+    update callback
+    <set>
+      <if test="cusId != null">
+        cus_id = #{cusId,jdbcType=INTEGER},
+      </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="cusname != null">
+        cusname = #{cusname,jdbcType=VARCHAR},
+      </if>
+      <if test="visitTime != null">
+        visit_time = #{visitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where call_id = #{callId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mmall.model.Callback">
+    update callback
+    set cus_id = #{cusId,jdbcType=INTEGER},
+      dept_id = #{deptId,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      cusname = #{cusname,jdbcType=VARCHAR},
+      visit_time = #{visitTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=INTEGER}
+    where call_id = #{callId,jdbcType=INTEGER}
+  </update>
+
+  <!--查找来访客户的回访记录-->
+  <select id="findAllCallBackByCusName" resultType="map" resultMap="BaseResultMap">
+     select cusname, visit_time, remark
+     from callback
+     where cusname = #{callBack.cusname} and flag = 1 and username = #{callBack.username}
+  </select>
+
+  <!--公共池客户所属修改-->
+  <update id="updateCommonPoolCus" parameterType="map">
+    UPDATE callback
+    SET dept_id = #{salesForm.deptId},userid = #{salesForm.userid}, username = #{salesForm.operator}
+    WHERE cus_id = #{salesForm.id}
+  </update>
+</mapper>
